@@ -242,3 +242,7 @@ button { font: inherit; }
   .reveal { opacity: 1; transform: none; }
   .menu-toggle, .scroll-meter { display: none; }
 }
+
+/* Progressive enhancement: essential content and mobile links remain accessible without JavaScript. */
+html:not(.js) .reveal { opacity: 1; transform: none; }
+@media (max-width: 760px) { html:not(.js) .mobile-menu { visibility: visible; opacity: 1; max-height: 320px; padding-bottom: 15px; } }
