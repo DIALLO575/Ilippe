@@ -37,3 +37,7 @@ Host: Vercel project `illipe`, connected to `DIALLO575/Ilippe` (repository spell
 - Mobile menu opens, closes and keyboard Escape works.
 - Verify at 320px, 390px, 768px and large desktop widths.
 - Check readable contrast, keyboard navigation and no horizontal overflow.
+
+## Aplunio brand asset provenance
+
+The wordmark shown on Home and Our Work is Aplunio's **real founder-selected V1 kit**, not the illustrative A used in early mockups. The SVG assets are copied from the official [Aplunio Brand Kit V1](https://drive.google.com/file/d/1hl5yWrKj-R5OlrKNxCtKvY2bUVLBp3l7/view) stored in the Aplunio Google Drive project and documented in [Aplunio Brand Guidelines](https://app.notion.com/p/40663a5022e48197acfbe6fa586e0122). In the repo, `assets/aplunio-logo-primary.svg` is the source vector for light backgrounds; `assets/aplunio-logo-on-dark.svg` is the matching verified-on-dark variant for this site. **Aplunio brand asset status remains Needs QA** in Notion: exact vector and trademark clearance are not represented as final approvals.

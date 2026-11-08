@@ -346,3 +346,10 @@ body{font-size:16px}
   .work-side{gap:16px}
   .section-kicker{font-size:10px;letter-spacing:.1em}
 }
+
+/* Genuine Aplunio V1 brand kit logo (wordmark + blue symbol), not a placeholder. */
+.aplunio-heading{margin-top:38px!important;margin-bottom:19px!important;line-height:1!important}
+.aplunio-heading img{display:block;width:min(355px,100%);height:auto;object-fit:contain;object-position:left center}
+.aplunio-detail-heading{margin-top:17px!important;line-height:1!important}
+.aplunio-detail-heading img{display:block;width:min(350px,100%);height:auto;object-fit:contain;object-position:left center}
+@media(max-width:760px){.aplunio-heading img{width:min(320px,100%)}.aplunio-detail-heading img{width:min(320px,100%)}}
