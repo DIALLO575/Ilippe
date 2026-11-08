@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="770" viewBox="0 0 1500 770" role="img" aria-label="Abstract mineral forms">
+<defs>
+  <radialGradient id="ambient" cx="74%" cy="20%" r="83%"><stop stop-color="#51453d"/><stop offset=".48" stop-color="#332d29"/><stop offset="1" stop-color="#211f1e"/></radialGradient>
+  <linearGradient id="under" x1=".05" y1=".2" x2=".85" y2="1"><stop stop-color="#665b4e"/><stop offset=".52" stop-color="#413c35"/><stop offset="1" stop-color="#252b28"/></linearGradient>
+  <linearGradient id="sand" x1=".3" y1=".8" x2=".78" y2=".2"><stop stop-color="#81705d"/><stop offset=".40" stop-color="#ad9b83"/><stop offset=".66" stop-color="#d8c6ad"/><stop offset="1" stop-color="#e4d2bb"/></linearGradient>
+  <linearGradient id="sandShade" x1=".4" y1=".5" x2="1" y2="1"><stop stop-color="#d7c3a7" stop-opacity=".15"/><stop offset=".55" stop-color="#bda88c" stop-opacity=".12"/><stop offset="1" stop-color="#201f1c" stop-opacity=".45"/></linearGradient>
+  <linearGradient id="shadow" x1=".1" y1=".5" x2=".8" y2=".9"><stop stop-color="#232723"/><stop offset=".5" stop-color="#1d2724"/><stop offset="1" stop-color="#101a18"/></linearGradient>
+  <radialGradient id="highlight"><stop stop-color="#f8e8cc" stop-opacity=".19"/><stop offset="1" stop-color="#eadac7" stop-opacity="0"/></radialGradient>
+  <filter id="grain" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".34" numOctaves="3" seed="12" stitchTiles="stitchTiles" result="n"/><feColorMatrix in="n" type="saturate" values="0"/></filter>
+  <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1500" height="770" fill="url(#ambient)"/>
+<ellipse cx="1130" cy="150" rx="630" ry="390" fill="url(#highlight)"/>
+<path d="M0 770 C336 623 504 544 749 488 C973 437 1228 350 1500 205 L1500 770Z" fill="url(#under)"/>
+<path d="M320 770 C550 630 773 577 984 442 C1204 301 1307 202 1500 86 L1500 770Z" fill="url(#sandShade)"/>
+<path d="M758 770 C872 653 1021 494 1090 340 C1181 141 1354 69 1500 0 L1500 770Z" fill="#1a211e" opacity=".6" filter="url(#blur)"/>
+<path d="M726 770 C860 613 936 462 1043 323 C1177 149 1334 56 1500 -20 L1500 365 C1373 407 1235 485 1141 548 C988 651 888 720 823 770Z" fill="url(#sand)"/>
+<path d="M726 770 C860 613 936 462 1043 323 C1177 149 1334 56 1500 -20" fill="none" stroke="#f5e6d0" stroke-opacity=".35" stroke-width="2"/>
+<path d="M1055 770 C1180 644 1319 559 1500 512 L1500 770Z" fill="url(#shadow)"/>
+<path d="M0 770 C296 710 530 662 736 770Z" fill="#242825" opacity=".5"/>
+<rect width="1500" height="770" filter="url(#grain)" opacity=".10" style="mix-blend-mode:soft-light"/>
+</svg>
