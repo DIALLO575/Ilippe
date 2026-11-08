@@ -1,43 +1,39 @@
-# Illipe — Institutional landing page
+# Illipe — Institutional Website V2
 
-A lightweight **static website** for [Illipe](https://illipe.org), the founder-led technology venture behind Aplunio. This is an institutional presentation rather than a sales funnel.
+[Illipe](https://illipe.vercel.app/) is an early-stage, founder-led technology venture in development. This is its **institutional website**, not a sales landing page.
 
-## Content
+## Information architecture
+- `/` **Home** — identity, parent-venture role, approach, first initiative.
+- `/company/` **Company** — who Illipe is, why it exists, and the parent organization it aims to build.
+- `/work/` **Our work** — Aplunio as the only currently presented initiative, accurately labeled *in development*.
 
-- Hero: technology products for real-world problems.
-- Aplunio: first product, clearly marked **in development**.
-- Company: realistic description of a small founder-led venture.
-- Approach: real needs, reliable products, continuous improvement.
-- Contact: no fictional or unconfigured email address.
+Contact is a shared footer section with a transparently pending public contact channel. No fictional email address, office, team roster, customers, legal registration, or live Aplunio URL are claimed.
 
-## Design
+## Brand fidelity
+- Reused `assets/illipe-wordmark.svg`, `assets/illipe-i.svg` and `favicon.svg`, which were traced from the actual Illipe working PNG logo reference stored in Google Drive.
+- Notion's working brand palette is **Mineral Black `#17191D`**, **Off-White `#F5F4F0`**, **Muted Gray `#858C86`**.
+- Typography uses provisional Manrope and DM Sans; **no approved official typeface has been selected**.
+- No beige cloud artwork, stock illustration, flashy gradients, scroll reveal animations, or decorative animations.
+- The traced SVG is a web-use asset from working PNG, **not an approved vector master**. Final production-artwork QA, trademark similarity and rights review remain pending.
 
-- **Brand-reference colors (Notion, working status):** mineral black `#17191D`, off-white `#F5F4F0`, neutral gray `#858C86`.
-- **V1 styling:** restrained mineral-black and gray surfaces, minimal contrast, and no decorative beige/cloud backgrounds. No animation or scroll-driven effects.
-- **Wordmark:** `assets/illipe-wordmark.svg`. This is a vector *trace of the actual reference PNG* `illipe_wordmark_light_on_charcoal_working.png` stored in the Illipe Google Drive Brand Visual Identity folder, **including the original distinctive lowercase 'i'**. It is an interim web-use conversion, not a certified original master vector.
-- **Monogram:** `assets/illipe-i.svg`, traced from the same reference; `favicon.svg` uses that mark.
-- **Typography:** Manrope + DM Sans, a *provisional implementation choice*. The Notion Design Tokens database explicitly lists corporate typography as **Not selected**.
-- No stock photography, faux office visuals, abstract cloud artwork, or invented product screenshots.
+[Notion Brand & Visual Identity](https://app.notion.com/p/41263a5022e481e29557cf4aa87ebb57)
+[Drive Logo Reference](https://drive.google.com/file/d/12QRbwhF0v2YhjwCR7sPzJvP4N2wyc-7w/view?usp=drivesdk)
 
-Brand references:
-- [Notion Brand & Visual Identity](https://app.notion.com/p/41263a5022e481e29557cf4aa87ebb57)
-- [Drive original wordmark](https://drive.google.com/file/d/12QRbwhF0v2YhjwCR7sPzJvP4N2wyc-7w/view?usp=drivesdk)
-- [Drive monogram lockup](https://drive.google.com/file/d/1Jnjrf18bHpctLJsUxw4KWZEgnTjYK4JW/view?usp=drivesdk)
+## Implementation
+Plain semantic HTML + shared CSS + minimal vanilla JavaScript (responsive menu and footer year). No backend, authentication, database or API keys. Desktop navigation, keyboard focus, reduced-motion and no-JS mobile navigation are supported.
 
-Production-brand QA is still outstanding: artwork quality, original editable master, favicon testing and legal/logo clearance. Do not mark these assets as officially approved just because they are in use.
+Host: Vercel project `illipe`, connected to `DIALLO575/Ilippe` (repository spelling differs from brand), deploying from `main`.
 
-## Stack
+- Build command: none
+- Framework preset: Other / Static
+- Output directory: root
+- Canonical site URLs: `https://illipe.org/`, `/company/`, `/work/`.
+- Verify Cloudflare DNS and custom domain HTTPS separately before publicly announcing the site.
+- When a verified public email and Aplunio URL exist, add them to the appropriate pages, not before.
 
-Plain HTML, CSS, a tiny vanilla JavaScript file for the mobile navigation and copyright year. No backend, accounts, auth, database, forms or secret credentials.
-
-## Hosting
-
-GitHub: `DIALLO575/Ilippe` (repository name differs from brand spelling). Vercel project: `illipe`. Deploys from `main`.
-
-- Build command: **none**
-- Framework: **Other / static**
-- Output directory: **repository root**
-
-Domain `illipe.org` and `www.illipe.org` are attached to the Vercel project but DNS must be configured at Cloudflare before the domain goes live. The `www` hostname redirects to the apex.
-
-**Before announcing:** inspect mobile layout, confirm HTTPS/DNS/redirects, verify a working corporate contact route, and publish only substantiated company/product claims.
+## QA checklist
+- All three pages load over HTTPS with CSS and logo.
+- Navigation and CTA destinations stay within the correct page structure.
+- Mobile menu opens, closes and keyboard Escape works.
+- Verify at 320px, 390px, 768px and large desktop widths.
+- Check readable contrast, keyboard navigation and no horizontal overflow.
