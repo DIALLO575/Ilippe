@@ -13,11 +13,11 @@ A lightweight **static website** for [Illipe](https://illipe.org), the founder-l
 ## Design
 
 - **Brand-reference colors (Notion, working status):** mineral black `#17191D`, off-white `#F5F4F0`, neutral gray `#858C86`.
-- **Secondary mood colors:** muted sage and warm stone, drawn from the visual mockup; not asserted as permanent approved corporate brand tokens.
+- **V1 styling:** restrained mineral-black and gray surfaces, minimal contrast, and no decorative beige/cloud backgrounds. No animation or scroll-driven effects.
 - **Wordmark:** `assets/illipe-wordmark.svg`. This is a vector *trace of the actual reference PNG* `illipe_wordmark_light_on_charcoal_working.png` stored in the Illipe Google Drive Brand Visual Identity folder, **including the original distinctive lowercase 'i'**. It is an interim web-use conversion, not a certified original master vector.
 - **Monogram:** `assets/illipe-i.svg`, traced from the same reference; `favicon.svg` uses that mark.
 - **Typography:** Manrope + DM Sans, a *provisional implementation choice*. The Notion Design Tokens database explicitly lists corporate typography as **Not selected**.
-- Mineral backgrounds: `assets/hero-mineral.svg`, `assets/aplunio-form.svg`, abstract illustrations, not claims of real facilities or product screenshots.
+- No stock photography, faux office visuals, abstract cloud artwork, or invented product screenshots.
 
 Brand references:
 - [Notion Brand & Visual Identity](https://app.notion.com/p/41263a5022e481e29557cf4aa87ebb57)
@@ -28,7 +28,7 @@ Production-brand QA is still outstanding: artwork quality, original editable mas
 
 ## Stack
 
-Plain HTML, CSS, a tiny vanilla JavaScript enhancement file. No backend, accounts, auth, database, forms or secret credentials.
+Plain HTML, CSS, a tiny vanilla JavaScript file for the mobile navigation and copyright year. No backend, accounts, auth, database, forms or secret credentials.
 
 ## Hosting
 
