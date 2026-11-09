@@ -49,3 +49,7 @@ The selected editorial website direction is implemented in HTML/CSS: full-bleed 
 ## Interaction and regression checks
 
 The site includes a separate, small `polish.css` layer for responsive refinements, subtle transitions, a mobile navigation sheet and reduced-motion behaviour. `main.js` uses `IntersectionObserver` for on-screen reveals only; the site remains usable without animations or a JavaScript framework. Run `node --check main.js && node --test tests/site-smoke.test.mjs` to verify navigation anchors, required assets, SEO metadata, brand fidelity and responsive/reduced-motion rules. GitHub Actions runs these checks on `main` and pull requests. This automated smoke suite does **not** replace a visual mobile device check or Lighthouse performance audit.
+
+## V5 panoramic hero
+
+The Home hero is a full-width 1600x760 WebP editorial illustration. The source was a *generated webpage concept*, and `scripts/build_hero.py` extracts only a clean architectural area (no baked-in navbar, title, call-to-action or UI) and fades it into a dark navy panorama. Real Illipe typography, navigation and CTAs are rendered in semantic HTML above the background. Concept art is **not** an actual Illipe office/building; no property claim is made. Responsive framing keeps the text readable and preserves the architecture's visibility on desktop and mobile. The old 510x550 portrait card is no longer used on the homepage.

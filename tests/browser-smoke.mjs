@@ -37,28 +37,22 @@ try {
       innerWidth: window.innerWidth,
       heading: document.querySelector("h1")?.getBoundingClientRect().toJSON(),
       header: document.querySelector(".site-header")?.getBoundingClientRect().toJSON(),
-      hero: document.querySelector(".hero-photo img")?.complete &&
-            document.querySelector(".hero-photo img")?.naturalWidth > 0
+      heroBackground: getComputedStyle(document.querySelector(".hero")).backgroundImage,
+      heroBounds: document.querySelector(".hero").getBoundingClientRect().toJSON()
     }));
     assert.ok(metrics.scrollWidth <= metrics.innerWidth + 1,
       `horizontal overflow at ${width}px: ${metrics.scrollWidth} > ${metrics.innerWidth}`);
-    assert.ok(metrics.hero, `hero image not loaded at ${width}px`);
-    const photo = await page.locator(".hero-photo").evaluate(el => {
-      const photo = el.getBoundingClientRect();
-      const image = el.querySelector("img");
-      return {
-        panelWidth: photo.width, panelHeight: photo.height,
-        imageFit: getComputedStyle(image).objectFit,
-        naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
-        panelTop: photo.top, panelRight: photo.right
-      };
+    assert.match(metrics.heroBackground, /illipe-hero-wide\\.webp/, `wide hero not applied at ${width}px`);
+    assert.ok(metrics.heroBounds.width >= width - 1, `hero is not full-bleed at ${width}px`);
+    const actualImage = await page.evaluate(async () => {
+      const image = new Image();
+      image.src = "/assets/illipe-hero-wide.webp";
+      await image.decode();
+      return {width: image.naturalWidth, height: image.naturalHeight};
     });
-    assert.equal(photo.imageFit, "contain", `whole photo must be visible at ${width}px`);
-    assert.equal(photo.naturalWidth, 510, "unexpected hero photo width");
-    assert.equal(photo.naturalHeight, 550, "unexpected hero photo height");
-    assert.ok(Math.abs(photo.panelWidth / photo.panelHeight - 510 / 550) < .03,
-      `hero portrait aspect ratio incorrect at ${width}px`);
-    assert.ok(photo.panelRight <= width + 1, `hero photo outside viewport at ${width}px`);
+    assert.equal(actualImage.width, 1600, "unexpected wide hero width");
+    assert.equal(actualImage.height, 760, "unexpected wide hero height");
+    assert.equal(await page.locator(".hero-photo").count(), 0, "portrait photo card still rendered");
     assert.ok(metrics.heading.width > 100 && metrics.heading.height > 75,
       `hero heading not laid out at ${width}px`);
     assert.ok(metrics.heading.top >= metrics.header.bottom - 2,

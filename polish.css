@@ -376,3 +376,104 @@ section[id]{scroll-margin-top:95px}
   .page-home .hero-photo { max-width: 345px; }
   .page-home .hero-photo figcaption { font-size: 7px; }
 }
+
+
+/* V5 — cinematic panoramic hero. Actual asset is 1600 × 760 (2.1:1).
+   Text/navigation are REAL HTML over background, never part of the image.
+   The building is conceptual illustration, not an Illipe workplace. */
+.page-home .hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background-color:#101A29;
+  background-image:url("/assets/illipe-hero-wide.webp");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center center;
+}
+.page-home .hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(5,12,24,.52) 0%,rgba(7,16,30,.40) 27%,rgba(8,18,32,.15) 49%,rgba(8,17,29,0) 76%),
+             linear-gradient(0deg,rgba(8,15,27,.15),transparent 45%);
+}
+.page-home .hero-inner{
+  width:min(calc(100% - 112px),1220px);
+  position:relative;
+  z-index:2;
+  min-height:clamp(650px,83svh,830px);
+  padding-top:155px;
+  padding-bottom:106px;
+  display:flex;
+  align-items:center;
+}
+.page-home .hero-main{
+  display:block;
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:860px;
+}
+.page-home .hero-copy{
+  width:min(720px,65vw);
+  max-width:720px;
+  position:relative;
+  z-index:3;
+}
+.page-home .hero .display{
+  font-size:clamp(48px,5.4vw,78px);
+  line-height:1.105;
+  text-shadow:0 2px 14px rgba(4,11,21,.25);
+}
+.page-home .hero-intro{
+  max-width:580px;
+  color:#E3E8EC;
+  text-shadow:0 1px 9px rgba(4,11,21,.25);
+}
+.page-home .hero-actions{
+  margin-top:33px;
+}
+.page-home .hero .section-kicker{
+  color:#E7ECEF;
+}
+@media (max-width:1050px) and (min-width:761px){
+  .page-home .hero-inner{width:calc(100% - 74px);min-height:660px;padding-top:129px;padding-bottom:75px}
+  .page-home .hero-copy{width:min(660px,72vw)}
+  .page-home .hero .display{font-size:clamp(44px,5.5vw,65px)}
+  .page-home .hero{background-position:60% center}
+  .page-home .hero::before{background:linear-gradient(90deg,rgba(5,12,23,.81),rgba(5,13,24,.57) 55%,rgba(5,13,24,.11))}
+}
+@media (max-width:760px){
+  .page-home .hero{background-position:73% center;background-size:cover}
+  .page-home .hero-inner{
+    width:calc(100% - 38px);
+    min-height:clamp(670px,89svh,850px);
+    padding-top:122px;
+    padding-bottom:80px;
+    display:flex;
+    align-items:center;
+  }
+  .page-home .hero-main{display:block;width:100%;max-width:none}
+  .page-home .hero-copy{width:100%;max-width:650px}
+  .page-home .hero .display{font-size:clamp(43px,8.5vw,63px);line-height:1.12}
+  .page-home .hero-intro{max-width:530px;font-size:15px}
+  .page-home .hero::before{
+    background:linear-gradient(90deg,rgba(5,12,24,.94),rgba(5,12,24,.80) 62%,rgba(5,13,25,.59)),
+               linear-gradient(0deg,rgba(5,12,24,.35),transparent 52%);
+  }
+}
+@media (max-width:560px){
+  .page-home .hero{background-position:76% center}
+  .page-home .hero-inner{min-height:clamp(665px,92svh,830px);padding-top:117px;padding-bottom:65px}
+  .page-home .hero .display{font-size:clamp(40px,9.6vw,55px)}
+  .page-home .hero-intro{font-size:14.5px}
+}
+@media (max-width:420px){
+  .page-home .hero{background-position:78% center}
+  .page-home .hero-inner{min-height:680px;padding-top:114px;padding-bottom:62px}
+  .page-home .hero .display{font-size:clamp(38px,9.7vw,46px)}
+}
+/* The old portrait hero zoom animation is no longer used. */
