@@ -7,7 +7,7 @@
 - `/company/` **Company** — who Illipe is, why it exists, and the parent organization it aims to build.
 - `/work/` **Our work** — Aplunio as the only currently presented initiative, accurately labeled *in development*.
 
-Contact is a shared footer section with a transparently pending public contact channel. No fictional email address, office, team roster, customers, legal registration, or live Aplunio URL are claimed.
+Contact is a shared institutional section on all three pages. The founder-reported Zoho Mail addresses `contact@illipe.org` (general enquiries) and `partnerships@illipe.org` (partnerships) are public `mailto:` links; the privileged `admin@illipe.org` account remains private. No fictional office, team roster, customers, legal registration, or live Aplunio URL are claimed.
 
 ## Brand fidelity
 - Reused `assets/illipe-wordmark.svg`, `assets/illipe-i.svg` and `favicon.svg`, which were traced from the actual Illipe working PNG logo reference stored in Google Drive.
@@ -29,7 +29,7 @@ Host: Vercel project `illipe`, connected to `DIALLO575/Ilippe` (repository spell
 - Output directory: root
 - Canonical site URLs: `https://illipe.org/`, `/company/`, `/work/`.
 - Verify Cloudflare DNS and custom domain HTTPS separately before publicly announcing the site.
-- When a verified public email and Aplunio URL exist, add them to the appropriate pages, not before.
+- The two publicly designated Illipe email addresses are shown in the contact section and footer. Zoho mailbox delivery tests must still be verified separately; no Aplunio product URL is claimed.
 
 ## QA checklist
 - All three pages load over HTTPS with CSS and logo.
@@ -53,3 +53,7 @@ The site includes a separate, small `polish.css` layer for responsive refinement
 ## V5 panoramic hero
 
 The Home hero is a full-width 1600x760 WebP editorial illustration. The source was a *generated webpage concept*, and `scripts/build_hero.py` extracts only a clean architectural area (no baked-in navbar, title, call-to-action or UI) and fades it into a dark navy panorama. Real Illipe typography, navigation and CTAs are rendered in semantic HTML above the background. Concept art is **not** an actual Illipe office/building; no property claim is made. Responsive framing keeps the text readable and preserves the architecture's visibility on desktop and mobile. The old 510x550 portrait card is no longer used on the homepage.
+
+## Institutional contact update (2026-11-09)
+
+The existing placeholder contact section was replaced on `/`, `/company/` and `/work/` with two editorial, responsive email links. Only public institutional contact channels are published. This change introduces no external contact-form service, backend, tracking, or credentials. The `admin@illipe.org` mailbox stays internal. Provider-side delivery tests and 2FA checks are tracked in [Illipe's Business Email register](https://app.notion.com/p/45f5ccef74464beaa2fd11cdb6b943cc).
