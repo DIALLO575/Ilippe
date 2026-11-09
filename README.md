@@ -45,3 +45,7 @@ The wordmark shown on Home and Our Work is Aplunio's **real founder-selected V1 
 ## V3 design refresh
 
 The selected editorial website direction is implemented in HTML/CSS: full-bleed architectural **concept image** behind the institutional hero (not company headquarters), a three-principle band, a standalone Aplunio initiative panel with its genuine blue-on-dark logo and abstract visual (not a fabricated screenshot), a light off-white company identity panel and dark navy approach cards. The interior Company and Our Work pages share the same component palette. No new backend, animation library, fictitious business claims or external image dependencies.
+
+## Interaction and regression checks
+
+The site includes a separate, small `polish.css` layer for responsive refinements, subtle transitions, a mobile navigation sheet and reduced-motion behaviour. `main.js` uses `IntersectionObserver` for on-screen reveals only; the site remains usable without animations or a JavaScript framework. Run `node --check main.js && node --test tests/site-smoke.test.mjs` to verify navigation anchors, required assets, SEO metadata, brand fidelity and responsive/reduced-motion rules. GitHub Actions runs these checks on `main` and pull requests. This automated smoke suite does **not** replace a visual mobile device check or Lighthouse performance audit.

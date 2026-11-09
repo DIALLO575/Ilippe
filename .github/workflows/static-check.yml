@@ -1,0 +1,21 @@
+name: Static site checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Check JavaScript syntax
+        run: node --check main.js
+      - name: Check pages, links, SEO and responsive contracts
+        run: node --test tests/site-smoke.test.mjs
