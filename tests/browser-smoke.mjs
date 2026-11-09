@@ -42,11 +42,11 @@ try {
     }));
     assert.ok(metrics.scrollWidth <= metrics.innerWidth + 1,
       `horizontal overflow at ${width}px: ${metrics.scrollWidth} > ${metrics.innerWidth}`);
-    assert.ok(metrics.heroBackground.includes("illipe-hero-wide.webp"), `wide hero not applied at ${width}px`);
+    assert.ok(metrics.heroBackground.includes("hero-illipe-v2.webp"), `wide hero not applied at ${width}px`);
     assert.ok(metrics.heroBounds.width >= width - 1, `hero is not full-bleed at ${width}px`);
     const actualImage = await page.evaluate(async () => {
       const image = new Image();
-      image.src = "/assets/illipe-hero-wide.webp";
+      image.src = "/assets/hero-illipe-v2.webp";
       await image.decode();
       return {width: image.naturalWidth, height: image.naturalHeight};
     });
