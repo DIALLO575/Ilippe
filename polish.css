@@ -477,3 +477,133 @@ section[id]{scroll-margin-top:95px}
   .page-home .hero .display{font-size:clamp(38px,9.7vw,46px)}
 }
 /* The old portrait hero zoom animation is no longer used. */
+
+
+/* Institutional contact channels — Illipe. Public addresses only; admin stays private. */
+.contact-section{
+  background:#F5F4F0;
+  border-top:1px solid #DEE1DC;
+  border-bottom:1px solid #DEE1DC;
+  padding-block:clamp(82px,9vw,130px);
+}
+.contact-section .contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  align-items:start;
+  gap:clamp(38px,7vw,112px);
+}
+.contact-editorial{min-width:0;position:relative}
+.contact-section .contact-editorial .section-kicker{color:#586160}
+.contact-section .contact-grid h2{
+  color:#17191D;
+  margin:23px 0 0;
+  font-size:clamp(40px,5.1vw,70px);
+  line-height:1.11;
+  letter-spacing:-.065em;
+  text-wrap:balance;
+}
+.contact-section .contact-grid .contact-intro{
+  color:#414C4D;
+  max-width:400px;
+  margin-top:25px;
+  font-size:16px;
+  line-height:1.85;
+}
+.contact-list{display:grid;gap:14px;min-width:0}
+.contact-item{
+  color:#17191D;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  min-width:0;
+  border:1px solid #D8DDD7;
+  background:rgba(255,255,255,.62);
+  border-radius:15px;
+  padding:27px 29px 28px;
+  text-decoration:none;
+  transition:border-color .23s ease,background-color .23s ease,transform .23s ease,box-shadow .23s ease;
+}
+.contact-item:hover{
+  color:#17191D;
+  background:#FFF;
+  border-color:#A1ABA6;
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(20,28,34,.055);
+}
+.contact-item:focus-visible{
+  outline:3px solid #334C60;
+  outline-offset:4px;
+}
+.contact-item-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+}
+.contact-category{
+  color:#596363;
+  font-size:10px;
+  line-height:1.4;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  font-weight:700;
+}
+.contact-arrow{
+  display:grid;
+  place-items:center;
+  flex:0 0 35px;
+  width:35px;
+  height:35px;
+  border:1px solid #CCD2CC;
+  border-radius:50%;
+  font-size:19px;
+  line-height:1;
+  transition:transform .23s ease,background-color .23s ease,border-color .23s ease;
+}
+.contact-item:hover .contact-arrow{
+  transform:translate(2px,-2px);
+  background:#E9EEEA;
+  border-color:#A1ABA6;
+}
+.contact-email{
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(21px,2.1vw,28px);
+  font-weight:600;
+  line-height:1.35;
+  letter-spacing:-.045em;
+  overflow-wrap:anywhere;
+}
+.contact-purpose{
+  color:#596361;
+  font-size:13.5px;
+  line-height:1.7;
+  margin-top:13px;
+  max-width:440px;
+}
+.contact-grid .contact-note{
+  font-size:12px;
+  line-height:1.65;
+  color:#64706D;
+  max-width:460px;
+  padding:2px 4px 0;
+}
+@media(max-width:800px){
+  .contact-section .contact-grid{grid-template-columns:minmax(0,1fr);gap:37px}
+  .contact-section .contact-grid h2{max-width:680px}
+  .contact-section .contact-grid .contact-intro{max-width:630px}
+}
+@media(max-width:520px){
+  .contact-section{padding-block:75px 79px}
+  .contact-section .contact-grid{gap:29px}
+  .contact-section .contact-grid h2{font-size:clamp(38px,9vw,52px)}
+  .contact-section .contact-grid .contact-intro{font-size:14px;margin-top:18px}
+  .contact-item{padding:22px 21px 23px;border-radius:12px}
+  .contact-item-top{margin-bottom:21px}
+  .contact-email{font-size:clamp(19px,6.15vw,26px)}
+  .contact-purpose{font-size:12.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .contact-item,.contact-arrow{transition:none}
+  .contact-item:hover,.contact-item:hover .contact-arrow{transform:none}
+}

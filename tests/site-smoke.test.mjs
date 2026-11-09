@@ -74,3 +74,19 @@ test('brand sources and sitemap are coherent', () => {
   for (const [, canonical] of urls) assert.ok(map.includes(canonical));
   assert.match(read('robots.txt'), /Sitemap:\s*https:\/\/illipe\.org\/sitemap\.xml/);
 });
+
+test('public institutional emails are present and accessible across every page', () => {
+  for (const [file] of urls) {
+    const html = read(file);
+    assert.ok(html.includes('id="contact" aria-labelledby="contact-heading"'));
+    assert.ok(html.includes('href="mailto:contact@illipe.org"'));
+    assert.ok(html.includes('href="mailto:partnerships@illipe.org"'));
+    assert.ok(!html.includes('admin@illipe.org'));
+    assert.ok(!html.includes('PUBLIC CONTACT DETAILS — IN PREPARATION'));
+    assert.ok(html.includes('class="contact-item"'));
+  }
+  const css = read('polish.css');
+  assert.ok(css.includes('.contact-item:focus-visible'));
+  assert.ok(css.includes('overflow-wrap:anywhere'));
+  assert.ok(css.includes('@media(max-width:800px)'));
+});
