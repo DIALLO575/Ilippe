@@ -1,6 +1,13 @@
 (() => {
   "use strict";
 
+  // Keep bookmarked /#contact links working after moving Contact to its own page.
+  if (window.location.hash === "#contact" && window.location.pathname !== "/contact/") {
+    window.location.replace("/contact/");
+    return;
+  }
+
+
   const root = document.documentElement;
   root.classList.add("js");
 

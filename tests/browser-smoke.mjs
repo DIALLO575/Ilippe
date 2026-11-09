@@ -76,7 +76,7 @@ try {
     console.log(`PASS viewport ${width}px: layout, image, navigation`);
   }
 
-  for (const route of ["/company/", "/work/"]) {
+  for (const route of ["/company/", "/work/", "/contact/"]) {
     const page = await browser.newPage({viewport:{width:390,height:820}, reducedMotion:"reduce"});
     const response = await page.goto(baseURL + route, {waitUntil:"domcontentloaded"});
     assert.equal(response.status(), 200);
@@ -86,6 +86,40 @@ try {
     await page.close();
     console.log(`PASS ${route} at 390px`);
   }
+
+  // Direct contact navigation: no homepage scroll or duplicate contact section.
+  for (const width of [320, 390, 768, 1280]) {
+    const page = await browser.newPage({ viewport: { width, height: 820 }, reducedMotion: "reduce" });
+    await page.goto(baseURL + "/contact/", { waitUntil: "domcontentloaded" });
+    assert.ok((await page.locator("h1#contact-heading").innerText()).includes("conversation"));
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+    assert.ok(overflow <= 1, `/contact/ horizontal overflow at ${width}px: ${overflow}`);
+    assert.equal(await page.locator('a.contact-item[href="mailto:contact@illipe.org"]').count(), 1);
+    assert.equal(await page.locator('a.contact-item[href="mailto:partnerships@illipe.org"]').count(), 1);
+    const cardTop = await page.locator(".contact-item").first().evaluate(el => el.getBoundingClientRect().top);
+    assert.ok(cardTop < 820, `first email card too low at ${width}px: ${cardTop}`);
+    await page.close();
+    console.log(`PASS /contact/ at ${width}px: email cards and no overflow`);
+  }
+
+  const desktop = await browser.newPage({ viewport: { width: 1280, height: 820 }, reducedMotion: "reduce" });
+  await desktop.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+  await desktop.locator("header .contact-nav").click();
+  await desktop.waitForURL("**/contact/");
+  assert.equal(new URL(desktop.url()).pathname, "/contact/");
+  await desktop.close();
+
+  const mobile = await browser.newPage({ viewport: { width: 390, height: 820 }, reducedMotion: "reduce" });
+  await mobile.goto(baseURL + "/work/", { waitUntil: "domcontentloaded" });
+  await mobile.locator(".menu-toggle").click();
+  await mobile.locator('#mobile-nav a[href="/contact/"]').click();
+  await mobile.waitForURL("**/contact/");
+  assert.equal(new URL(mobile.url()).pathname, "/contact/");
+  await mobile.goto(baseURL + "/#contact", { waitUntil: "domcontentloaded" });
+  await mobile.waitForURL("**/contact/");
+  assert.equal(new URL(mobile.url()).pathname, "/contact/");
+  await mobile.close();
+  console.log("PASS Contact navigation desktop/mobile and legacy hash redirect");
 } finally {
   if (browser) await browser.close();
   await new Promise(resolve => server.close(resolve));

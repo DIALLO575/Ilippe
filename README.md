@@ -6,8 +6,9 @@
 - `/` **Home** — identity, parent-venture role, approach, first initiative.
 - `/company/` **Company** — who Illipe is, why it exists, and the parent organization it aims to build.
 - `/work/` **Our work** — Aplunio as the only currently presented initiative, accurately labeled *in development*.
+- `/contact/` **Contact** — dedicated institutional enquiry and partnership email channels.
 
-Contact is a shared institutional section on all three pages. The founder-reported Zoho Mail addresses `contact@illipe.org` (general enquiries) and `partnerships@illipe.org` (partnerships) are public `mailto:` links; the privileged `admin@illipe.org` account remains private. No fictional office, team roster, customers, legal registration, or live Aplunio URL are claimed.
+Contact is a dedicated route, with compact call-to-action links across the three other pages. The founder-reported Zoho Mail addresses `contact@illipe.org` (general enquiries) and `partnerships@illipe.org` (partnerships) are public `mailto:` links; the privileged `admin@illipe.org` account remains private. No fictional office, team roster, customers, legal registration, or live Aplunio URL are claimed.
 
 ## Brand fidelity
 - Reused `assets/illipe-wordmark.svg`, `assets/illipe-i.svg` and `favicon.svg`, which were traced from the actual Illipe working PNG logo reference stored in Google Drive.
@@ -27,12 +28,12 @@ Host: Vercel project `illipe`, connected to `DIALLO575/Ilippe` (repository spell
 - Build command: none
 - Framework preset: Other / Static
 - Output directory: root
-- Canonical site URLs: `https://illipe.org/`, `/company/`, `/work/`.
+- Canonical site URLs: `https://illipe.org/`, `/company/`, `/work/`, `/contact/`.
 - Verify Cloudflare DNS and custom domain HTTPS separately before publicly announcing the site.
-- The two publicly designated Illipe email addresses are shown in the contact section and footer. Zoho mailbox delivery tests must still be verified separately; no Aplunio product URL is claimed.
+- The two publicly designated Illipe email addresses are shown on the dedicated Contact page; the general address is also in the footer. Zoho mailbox delivery tests must still be verified separately; no Aplunio product URL is claimed.
 
 ## QA checklist
-- All three pages load over HTTPS with CSS and logo.
+- All four pages load over HTTPS with CSS and logo.
 - Navigation and CTA destinations stay within the correct page structure.
 - Mobile menu opens, closes and keyboard Escape works.
 - Verify at 320px, 390px, 768px and large desktop widths.
@@ -56,4 +57,8 @@ The Home hero is a full-width 1600x760 WebP editorial illustration. The source w
 
 ## Institutional contact update (2026-11-09)
 
-The existing placeholder contact section was replaced on `/`, `/company/` and `/work/` with two editorial, responsive email links. Only public institutional contact channels are published. This change introduces no external contact-form service, backend, tracking, or credentials. The `admin@illipe.org` mailbox stays internal. Provider-side delivery tests and 2FA checks are tracked in [Illipe's Business Email register](https://app.notion.com/p/45f5ccef74464beaa2fd11cdb6b943cc).
+The earlier contact section was consolidated into `/contact/` to keep navigation unambiguous. Other pages link to the dedicated page instead of repeating the full contact block. Only public institutional contact channels are published. This change introduces no external contact-form service, backend, tracking, or credentials. The `admin@illipe.org` mailbox stays internal. Provider-side delivery tests and 2FA checks are tracked in [Illipe's Business Email register](https://app.notion.com/p/45f5ccef74464beaa2fd11cdb6b943cc).
+
+## Contact navigation consolidation (2026-11-09)
+
+All main navigation, mobile navigation, footer and contact call-to-actions now link directly to `/contact/`, a standalone responsive page with two public Zoho Mail addresses. Older `/#contact` bookmarks redirect through a small client-side compatibility check. Home, Company, and Our Work show only a compact invitation to contact. The Contact page has canonical metadata, schema.org ContactPage markup, and a sitemap entry. `admin@illipe.org` remains unpublished. Browser and static smoke tests cover direct routing and mobile display. Delivery tests of email inboxes remain a separate Zoho task.

@@ -9,7 +9,8 @@ const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const urls = [
   ['index.html', 'https://illipe.org/'],
   ['company/index.html', 'https://illipe.org/company/'],
-  ['work/index.html', 'https://illipe.org/work/']
+  ['work/index.html', 'https://illipe.org/work/'],
+  ['contact/index.html', 'https://illipe.org/contact/']
 ];
 
 for (const [file, canonical] of urls) {
@@ -75,18 +76,29 @@ test('brand sources and sitemap are coherent', () => {
   assert.match(read('robots.txt'), /Sitemap:\s*https:\/\/illipe\.org\/sitemap\.xml/);
 });
 
-test('public institutional emails are present and accessible across every page', () => {
+test('Contact is a dedicated route, with public channels and no admin account', () => {
+  const contact = read('contact/index.html');
+  assert.ok(contact.includes('href="mailto:contact@illipe.org"'));
+  assert.ok(contact.includes('href="mailto:partnerships@illipe.org"'));
+  assert.ok(contact.includes('id="contact-heading"'));
+  assert.ok(contact.includes('href="/contact/" aria-current="page"'));
   for (const [file] of urls) {
     const html = read(file);
-    assert.ok(html.includes('id="contact" aria-labelledby="contact-heading"'));
-    assert.ok(html.includes('href="mailto:contact@illipe.org"'));
-    assert.ok(html.includes('href="mailto:partnerships@illipe.org"'));
-    assert.ok(!html.includes('admin@illipe.org'));
+    assert.ok(html.includes('href="/contact/"'), file + ': missing direct route');
+    assert.ok(!html.includes('href="/#contact"'), file + ': obsolete anchor');
+    assert.ok(!html.includes('admin@illipe.org'), file + ': admin must stay private');
     assert.ok(!html.includes('PUBLIC CONTACT DETAILS — IN PREPARATION'));
-    assert.ok(html.includes('class="contact-item"'));
+    assert.ok(html.includes('href="mailto:contact@illipe.org"'), file + ': footer contact missing');
+    if (file !== 'contact/index.html') {
+      assert.ok(html.includes('class="inquiry-section"'), file + ': missing CTA');
+      assert.ok(!html.includes('class="contact-section"'), file + ': duplicated contact section');
+      assert.ok(!html.includes('href="mailto:partnerships@illipe.org"'));
+    }
   }
+  assert.ok(read('main.js').includes('window.location.hash === "#contact"'));
+  assert.ok(read('main.js').includes('window.location.replace("/contact/")'));
   const css = read('polish.css');
+  assert.ok(css.includes('.page-contact .contact-landing-grid'));
   assert.ok(css.includes('.contact-item:focus-visible'));
-  assert.ok(css.includes('overflow-wrap:anywhere'));
-  assert.ok(css.includes('@media(max-width:800px)'));
+  assert.ok(css.includes('@media(max-width:420px)'));
 });
