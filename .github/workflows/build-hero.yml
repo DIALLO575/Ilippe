@@ -1,0 +1,33 @@
+name: Build wide Illipe hero asset
+on:
+  push:
+    branches: [main]
+    paths:
+      - design/illipe-hero-source-generated.png
+      - scripts/build_hero.py
+      - .github/workflows/build-hero.yml
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Install image processing dependency
+        run: python3 -m pip install --user pillow==11.3.0
+      - name: Build image
+        run: python3 scripts/build_hero.py
+      - name: Commit derived web asset when changed
+        run: |
+          git add assets/illipe-hero-wide.webp
+          if git diff --cached --quiet; then
+            echo "Asset unchanged"
+            exit 0
+          fi
+          git -c user.name="illipe-site-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "assets: render wide architectural hero illustration"
+          git push origin HEAD:main
