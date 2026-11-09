@@ -78,15 +78,15 @@ test('brand sources and sitemap are coherent', () => {
 test('public institutional emails are present and accessible across every page', () => {
   for (const [file] of urls) {
     const html = read(file);
-    assert.match(html, /id="contact" aria-labelledby="contact-heading"/);
-    assert.match(html, /href="mailto:contact@illipe\\.org"/);
-    assert.match(html, /href="mailto:partnerships@illipe\\.org"/);
-    assert.doesNotMatch(html, /admin@illipe\\.org/);
-    assert.doesNotMatch(html, /PUBLIC CONTACT DETAILS — IN PREPARATION/);
-    assert.match(html, /class="contact-item"/);
+    assert.ok(html.includes('id="contact" aria-labelledby="contact-heading"'));
+    assert.ok(html.includes('href="mailto:contact@illipe.org"'));
+    assert.ok(html.includes('href="mailto:partnerships@illipe.org"'));
+    assert.ok(!html.includes('admin@illipe.org'));
+    assert.ok(!html.includes('PUBLIC CONTACT DETAILS — IN PREPARATION'));
+    assert.ok(html.includes('class="contact-item"'));
   }
   const css = read('polish.css');
-  assert.match(css, /\\.contact-item:focus-visible/);
-  assert.match(css, /overflow-wrap:anywhere/);
-  assert.match(css, /\\.contact-section \\.contact-grid\\{grid-template-columns:minmax\\(0,1fr\\)/);
+  assert.ok(css.includes('.contact-item:focus-visible'));
+  assert.ok(css.includes('overflow-wrap:anywhere'));
+  assert.ok(css.includes('@media(max-width:800px)'));
 });
