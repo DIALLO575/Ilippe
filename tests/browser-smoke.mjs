@@ -42,7 +42,7 @@ try {
     }));
     assert.ok(metrics.scrollWidth <= metrics.innerWidth + 1,
       `horizontal overflow at ${width}px: ${metrics.scrollWidth} > ${metrics.innerWidth}`);
-    assert.match(metrics.heroBackground, /illipe-hero-wide\\.webp/, `wide hero not applied at ${width}px`);
+    assert.ok(metrics.heroBackground.includes("illipe-hero-wide.webp"), `wide hero not applied at ${width}px`);
     assert.ok(metrics.heroBounds.width >= width - 1, `hero is not full-bleed at ${width}px`);
     const actualImage = await page.evaluate(async () => {
       const image = new Image();
