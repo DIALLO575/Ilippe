@@ -19,3 +19,14 @@ jobs:
         run: node --check main.js
       - name: Check pages, links, SEO and responsive contracts
         run: node --test tests/site-smoke.test.mjs
+      - name: Install Playwright driver
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund playwright-core@1.56.1
+      - name: Ensure headless Chromium is available
+        run: |
+          if command -v google-chrome >/dev/null || command -v chromium >/dev/null; then
+            echo "Using preinstalled Chrome"
+          else
+            npx playwright@1.56.1 install chromium
+          fi
+      - name: Verify actual mobile and desktop layouts
+        run: node tests/browser-smoke.mjs
